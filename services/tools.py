@@ -1,7 +1,6 @@
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_core.tools import tool
 
-
 from utils.llm import initialize_llm
 
 llm = initialize_llm()
