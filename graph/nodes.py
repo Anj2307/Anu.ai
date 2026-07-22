@@ -1,4 +1,4 @@
-from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.prebuilt import ToolNode
 
 from graph.state import ChatState

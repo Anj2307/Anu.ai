@@ -3,7 +3,7 @@ import uuid
 import streamlit as st
 
 from main import workflow
-from utils.backend import retreive_all_threads
+
 
 
 def generate_thread_id():
