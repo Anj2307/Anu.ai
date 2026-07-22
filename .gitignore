@@ -9,3 +9,4 @@
 *.db
 __pycache__/
 langgraph_backend_database.py
+.pytest_cache/
