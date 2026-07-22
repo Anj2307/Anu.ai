@@ -4,3 +4,8 @@
 
 # LangGraph
 .langgraph_api/
+.env
+*.db-*
+*.db
+__pycache__/
+langgraph_backend_database.py
