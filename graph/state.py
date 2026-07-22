@@ -1,10 +1,8 @@
-from typing import TypedDict, Annotated
-from langchain_core.messages import (
-    BaseMessage,
-    SystemMessage,
-    HumanMessage,
-)
+from typing import Annotated, TypedDict
+
+from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from langgraph.graph.message import add_messages
+
 
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]

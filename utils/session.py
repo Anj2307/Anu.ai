@@ -1,12 +1,9 @@
 import streamlit as st
 
-from utils.frontend import (
-    generate_thread_id,
-    add_thread
-)
-
-from utils.backend import retreive_all_threads
 from main import checkpointer
+from utils.backend import retreive_all_threads
+from utils.frontend import add_thread, generate_thread_id
+
 
 def initialize_session():
 

@@ -1,7 +1,5 @@
 import streamlit as st
-
-from langchain_core.messages import HumanMessage
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 
 from utils.frontend import load_conversation
 
@@ -25,11 +23,6 @@ def load_messages_into_session(thread_id):
         else:
             role = "assistant"
 
-        history.append(
-            {
-                "role": role,
-                "content": msg.content
-            }
-        )
+        history.append({"role": role, "content": msg.content})
 
     st.session_state["message_history"] = history

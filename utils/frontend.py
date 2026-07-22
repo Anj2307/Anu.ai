@@ -1,8 +1,9 @@
 import uuid
+
 import streamlit as st
+
 from main import workflow
 from utils.backend import retreive_all_threads
-
 
 
 def generate_thread_id():
@@ -26,23 +27,12 @@ def reset_chat():
 
 
 def get_title(thread_id):
-    state = workflow.get_state(
-        config={
-            "configurable": {
-                "thread_id": thread_id
-            }
-        }
-    )
+    state = workflow.get_state(config={"configurable": {"thread_id": thread_id}})
 
     return state.values.get("title", f"Chat {thread_id[:8]}")
 
+
 def load_conversation(thread_id):
-    state = workflow.get_state(
-        config={
-            "configurable": {
-                "thread_id": thread_id
-            }
-        }
-    )
+    state = workflow.get_state(config={"configurable": {"thread_id": thread_id}})
 
     return state.values.get("messages", [])

@@ -1,6 +1,8 @@
-from langchain_openai import ChatOpenAI
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+
 
 def initialize_llm():
     load_dotenv()
@@ -12,4 +14,3 @@ def initialize_llm():
     )
 
     return llm
-

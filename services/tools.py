@@ -1,14 +1,16 @@
-from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_core.tools import tool
+from langgraph.prebuilt import ToolNode, tools_condition
+
 from utils.llm import initialize_llm
 
 llm = initialize_llm()
 search_tool = DuckDuckGoSearchRun(region="us-en")
 
+
 @tool
 def calculator(first_num: float, second_num: float, operation: str) -> float:
-    """"
+    """ "
     A simple calculator tool that performs basic arithmetic operations."""
     if operation == "add":
         return first_num + second_num
@@ -23,6 +25,7 @@ def calculator(first_num: float, second_num: float, operation: str) -> float:
     else:
         raise ValueError(f"Unsupported operation: {operation}")
 
-tools=[search_tool, calculator]
 
-llm_with_tools= llm.bind_tools(tools)
+tools = [search_tool, calculator]
+
+llm_with_tools = llm.bind_tools(tools)

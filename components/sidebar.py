@@ -1,12 +1,7 @@
 import streamlit as st
 
-from utils.frontend import (
-    reset_chat,
-    get_title,
-    load_conversation
-)
-
 from components.conversation import load_messages_into_session
+from utils.frontend import get_title, load_conversation, reset_chat
 
 
 def render_sidebar():

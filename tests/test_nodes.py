@@ -4,6 +4,7 @@ from langchain_core.messages import HumanMessage
 
 from graph.nodes import chat_node, title_node
 
+
 @patch("services.tools.llm_with_tools")
 def test_chat_node(mock_llm):
 
@@ -13,17 +14,13 @@ def test_chat_node(mock_llm):
 
     mock_llm.invoke.return_value = fake_response
 
-    state = {
-        "messages": [
-            HumanMessage(content="Hi")
-        ],
-        "title": ""
-    }
+    state = {"messages": [HumanMessage(content="Hi")], "title": ""}
 
     result = chat_node(state)
 
     assert "messages" in result
     assert len(result["messages"]) == 1
+
 
 @patch("services.tools.llm")
 def test_title_node(mock_llm):
@@ -34,23 +31,16 @@ def test_title_node(mock_llm):
 
     mock_llm.invoke.return_value = fake_response
 
-    state = {
-        "messages": [
-            HumanMessage(content="Hello")
-        ],
-        "title": ""
-    }
+    state = {"messages": [HumanMessage(content="Hello")], "title": ""}
 
     result = title_node(state)
 
     assert result["title"] == "Greeting Chat"
 
+
 def test_title_not_generated_twice():
 
-    state = {
-        "messages": [],
-        "title": "Existing Title"
-    }
+    state = {"messages": [], "title": "Existing Title"}
 
     result = title_node(state)
 
