@@ -5,7 +5,6 @@ import streamlit as st
 from main import workflow
 
 
-
 def generate_thread_id():
     return str(uuid.uuid4())
 
