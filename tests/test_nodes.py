@@ -5,7 +5,7 @@ from langchain_core.messages import HumanMessage
 from graph.nodes import chat_node, title_node
 
 
-@patch("services.tools.llm_with_tools")
+@patch("graph.nodes.llm_with_tools")
 def test_chat_node(mock_llm):
 
     fake_response = MagicMock()
@@ -22,7 +22,7 @@ def test_chat_node(mock_llm):
     assert len(result["messages"]) == 1
 
 
-@patch("services.tools.llm")
+@patch("graph.nodes.llm")
 def test_title_node(mock_llm):
 
     fake_response = MagicMock()
