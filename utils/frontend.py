@@ -1,6 +1,9 @@
 import uuid
 import streamlit as st
-from langgraph_backend_database import workflow, retreive_all_threads
+from main import workflow
+from utils.backend import retreive_all_threads
+
+
 
 def generate_thread_id():
     return str(uuid.uuid4())
