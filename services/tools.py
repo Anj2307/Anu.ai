@@ -1,16 +1,23 @@
-from langchain_community.tools import DuckDuckGoSearchRun
+from dotenv import load_dotenv
+from langchain_community.tools import TavilySearchResults
 from langchain_core.tools import tool
 
 from utils.llm import initialize_llm
 
+load_dotenv()
+
 llm = initialize_llm()
-search_tool = DuckDuckGoSearchRun(region="us-en")
+
+search_tool = TavilySearchResults(
+    max_results=5,
+    search_depth="advanced",
+    include_answer=True,
+)
 
 
 @tool
 def calculator(first_num: float, second_num: float, operation: str) -> float:
-    """ "
-    A simple calculator tool that performs basic arithmetic operations."""
+    """Perform basic arithmetic operations."""
     if operation == "add":
         return first_num + second_num
     elif operation == "subtract":
