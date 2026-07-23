@@ -21,6 +21,7 @@ jobs:
 
     env:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      TRAVILY_API_KEY: ${{ secrets.TRAVILY_API_KEY}}
 
     steps:
       - name: Checkout Repository
