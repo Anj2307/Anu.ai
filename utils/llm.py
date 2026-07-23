@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
-
+from graph.state import Intent
 
 def initialize_llm():
     load_dotenv()
@@ -14,3 +14,5 @@ def initialize_llm():
     )
 
     return llm
+
+router_llm= initialize_llm().with_structured_output(Intent)
