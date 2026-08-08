@@ -8,6 +8,9 @@
 
 # Streamlit secrets (never commit real keys)
 .streamlit/secrets.toml
+
+# Streamlit Cloud log dumps
+logs-*.txt
 *.db-*
 *.db
 __pycache__/
