@@ -6,7 +6,15 @@ from main import workflow
 
 
 def generate_thread_id():
-    return str(uuid.uuid4())
+    # Namespace every thread by the logged-in user so each user only ever
+    # sees their own conversations. Falls back to "anon" outside Streamlit
+    # (e.g. in tests).
+    try:
+        user_id = st.session_state.get("user_id", "anon")
+    except Exception:
+        user_id = "anon"
+
+    return f"{user_id}::{uuid.uuid4()}"
 
 
 def add_thread(thread_id):

@@ -14,6 +14,8 @@ def initialize_session():
         st.session_state["thread_id"] = generate_thread_id()
 
     if "chat_threads" not in st.session_state:
-        st.session_state["chat_threads"] = retreive_all_threads(checkpointer)
+        st.session_state["chat_threads"] = retreive_all_threads(
+            checkpointer, st.session_state["user_id"]
+        )
 
     add_thread(st.session_state["thread_id"])
