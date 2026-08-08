@@ -2,10 +2,14 @@ import os
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+
 from graph.state import Intent
+from utils.config import load_secrets
+
 
 def initialize_llm():
     load_dotenv()
+    load_secrets()
 
     llm = ChatOpenAI(
         base_url="https://openrouter.ai/api/v1",
@@ -15,4 +19,5 @@ def initialize_llm():
 
     return llm
 
-router_llm= initialize_llm().with_structured_output(Intent)
+
+router_llm = initialize_llm().with_structured_output(Intent)

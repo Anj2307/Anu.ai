@@ -1,7 +1,8 @@
-from typing import Annotated, TypedDict, Literal
-from pydantic import BaseModel
+from typing import Annotated, Literal, TypedDict
+
 from langchain_core.messages import BaseMessage
 from langgraph.graph.message import add_messages
+from pydantic import BaseModel
 
 
 class ChatState(TypedDict):
@@ -9,5 +10,6 @@ class ChatState(TypedDict):
     title: str
     intent: str
 
+
 class Intent(BaseModel):
-    intent: Literal["chat","calculator"]
+    intent: Literal["chat", "calculator"]

@@ -5,6 +5,9 @@
 # LangGraph
 .langgraph_api/
 .env
+
+# Streamlit secrets (never commit real keys)
+.streamlit/secrets.toml
 *.db-*
 *.db
 __pycache__/

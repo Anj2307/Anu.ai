@@ -2,9 +2,11 @@ from dotenv import load_dotenv
 from langchain_community.tools import TavilySearchResults
 from langchain_core.tools import tool
 
+from utils.config import load_secrets
 from utils.llm import initialize_llm
 
 load_dotenv()
+load_secrets()
 
 llm = initialize_llm()
 
