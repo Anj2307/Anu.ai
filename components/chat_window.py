@@ -32,7 +32,14 @@ def chat_window():
                 for message_chunk, metadata in workflow.stream(
                     {
                         "messages": [
-                            SystemMessage(content="You are a helpful assistant."),
+                            SystemMessage(
+                                content=(
+                                    "You are a helpful assistant. If the user asks "
+                                    "about documents, files, or context they have "
+                                    "uploaded, use the search_documents tool to look "
+                                    "it up before answering."
+                                )
+                            ),
                             HumanMessage(content=user_input),
                         ]
                     },
