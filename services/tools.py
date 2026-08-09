@@ -3,12 +3,13 @@ from langchain_community.tools import TavilySearchResults
 from langchain_core.tools import tool
 
 from utils.config import load_secrets
-from utils.llm import initialize_llm
+from utils.llm import initialize_llm, initialize_vision_llm
 
 load_dotenv()
 load_secrets()
 
 llm = initialize_llm()
+vision_llm = initialize_vision_llm()
 
 search_tool = TavilySearchResults(
     max_results=5,
