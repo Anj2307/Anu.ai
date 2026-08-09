@@ -20,7 +20,9 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from utils.config import load_secrets
 
-EMBEDDING_MODEL = "models/text-embedding-004"
+# Current GA Gemini embedding model. Override with the GOOGLE_EMBEDDING_MODEL
+# env/secret if Google renames it (run list_embedding_models() to see options).
+DEFAULT_EMBEDDING_MODEL = "models/gemini-embedding-001"
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 150
 DEFAULT_K = 4
@@ -35,10 +37,26 @@ def get_embeddings():
     from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
     load_secrets()
+    model = os.getenv("GOOGLE_EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
     return GoogleGenerativeAIEmbeddings(
-        model=EMBEDDING_MODEL,
+        model=model,
         google_api_key=os.getenv("GOOGLE_API_KEY"),
     )
+
+
+def list_embedding_models():
+    """Print Gemini models that support embeddings for the current API key.
+
+    Handy for diagnosing "model not found" errors:
+        python -c "from services.rag import list_embedding_models as f; f()"
+    """
+    import google.generativeai as genai
+
+    load_secrets()
+    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    for m in genai.list_models():
+        if "embedContent" in getattr(m, "supported_generation_methods", []):
+            print(m.name)
 
 
 def _read_file(uploaded_file):
